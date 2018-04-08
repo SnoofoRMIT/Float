@@ -70,6 +70,7 @@
     <Content Include="js\foreground.js" />
     <Content Include="js\main.js" />
     <Content Include="css\default.css" />
+    <Content Include="js\obstacle.js" />
     <Content Include="js\p5\.DS_Store" />
     <Content Include="js\p5\addons\.DS_Store" />
     <Content Include="js\p5\addons\p5.dom.js" />
