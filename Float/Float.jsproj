@@ -79,6 +79,7 @@
     <Content Include="js\p5\addons\p5.sound.min.js" />
     <Content Include="js\p5\p5.js" />
     <Content Include="js\p5\p5.min.js" />
+    <Content Include="js\player.js" />
     <None Include="Float_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />

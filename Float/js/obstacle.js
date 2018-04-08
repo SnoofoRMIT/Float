@@ -3,7 +3,7 @@
 // function to create an obstacle 'object'
 // that takes x and y coordinates as parameters
 function Obstacle(x, y) {
-    this.x = x + 100;
+    this.x = x + (width / 2);
     this.y = y;
 
     // function to show the obstacle
@@ -12,7 +12,11 @@ function Obstacle(x, y) {
         ellipse(this.x + (width / 2), this.y + 20, 200, 100);
     }
     // function to update obstacle coordinates
-    this.update = function (){
+    this.update = function (speed){
+        this.x -= speed;
+    }
+    // function to detect collision with player
+    this.collide = function () {
 
     }
 }
