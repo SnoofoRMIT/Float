@@ -8,7 +8,7 @@ function BalloonDog() {
 
 
     this.draw = function(x, y, scale) {
-        scale = scale || 1;                             //optional parameter which defaults to 1
+        scale = scale || 0.8;                             //optional parameter which defaults to 1
         this.frameNumber++;
         
         if (!(this.frameNumber%30)){
@@ -20,38 +20,65 @@ function BalloonDog() {
         }
 
         if(this.drawPosition===RUN){
-            strokeWeight(40);
+            strokeWeight(40*scale);
             strokeCap(ROUND);
             stroke(153,0,254,200);
-            line(x-10,y+15,x+10,y+50); //far rear leg
+            line(x-(10*scale),y+(15*scale),x+(10*scale),y+(50*scale)); //far rear leg
             stroke(0,153,200);
-            line(x+100,y+15,x+70,y+50); //far front leg
+            line(x+(100*scale),y+(15*scale),x+(70*scale),y+(50*scale)); //far front leg
             stroke(255,200,0,200);
-            line(x+105,y-60,x+90,y-80); //far ear
+            line(x+(105*scale),y-(60*scale),x+(90*scale),y-(80*scale)); //far ear
             stroke(255,0,0,200);
-            line(x,y,x+80,y); //body
+            line(x,y,x+(80*scale),y); //body
             stroke(255,102,0,200);
-            line(x-20,y-15,x-25,y-20); //tail base
+            line(x-(20*scale),y-(15*scale),x-(25*scale),y-(20*scale)); //tail base
             stroke(255,103,102,200);
-            line(x+110,y-15,x+120,y-40); //neck
+            line(x+(110*scale),y-(15*scale),x+(120*scale),y-(40*scale)); //neck
             stroke(255,255,0,200);
-            line(x-10,y+15,x+20,y+40); //near rear leg
+            line(x-(10*scale),y+(15*scale),x+(20*scale),y+(45*scale)); //near rear leg
             stroke(51,204,51,200);
-            line(x+100,y+15,x+90,y+50); //near front leg
+            line(x+(100*scale),y+(15*scale),x+(80*scale),y+(50*scale)); //near front leg
             stroke(255,50,0,200);
-            line(x+110,y-60,x+100,y-80); //near ear
+            line(x+(110*scale),y-(60*scale),x+(100*scale),y-(80*scale)); //near ear
             stroke(255,50,150,200);
-            line(x+145,y-55,x+150,y-55); //nose
-            strokeWeight(10);
+            line(x+(145*scale),y-(55*scale),x+(150*scale),y-(55*scale)); //nose base
+            strokeWeight(10*scale);
             stroke(255,102,0,200);
-            line(x-35,y-35,x-50,y-50); //tail end
+            line(x-(35*scale),y-(35*scale),x-(50*scale),y-(50*scale)); //tail end
             fill(255,50,150,200);
             noStroke();
-            triangle(x+168,y-55,x+175,y-62,x+175,y-48);
+            triangle(x+(168*scale),y-(55*scale),x+(175*scale),y-(62*scale),x+(175*scale),y-(48*scale)); //nose bit
 
 
         } else if (this.drawPosition===JUMP) {
-            ellipse(x,y,10*scale,10*scale);
+            strokeWeight(40*scale);
+            strokeCap(ROUND);
+            stroke(153,0,254,200);
+            line(x-(10*scale),y+(15*scale),x-(40*scale),y+(50*scale)); //far rear leg
+            stroke(0,153,200);
+            line(x+(100*scale),y+(15*scale),x+(130*scale),y+(50*scale)); //far front leg
+            stroke(255,200,0,200);
+            line(x+(130*scale),y-(40*scale),x+(110*scale),y-(40*scale)); //far ear
+            stroke(255,0,0,200);
+            line(x,y,x+(80*scale),y); //body
+            stroke(255,102,0,200);
+            line(x-(20*scale),y-(15*scale),x-(25*scale),y-(15*scale)); //tail base
+            stroke(255,103,102,200);
+            line(x+(110*scale),y-(15*scale),x+(130*scale),y-(20*scale)); //neck
+            stroke(255,255,0,200);
+            line(x-(10*scale),y+(15*scale),x-(25*scale),y+(50*scale)); //near rear leg
+            stroke(51,204,51,200);
+            line(x+(100*scale),y+(15*scale),x+(120*scale),y+(50*scale)); //near front leg
+            stroke(255,50,0,200);
+            line(x+(130*scale),y-(40*scale),x+(115*scale),y-(50*scale)); //near ear
+            stroke(255,50,150,200);
+            line(x+(155*scale),y-(25*scale),x+(160*scale),y-(25*scale)); //nose base
+            strokeWeight(10*scale);
+            stroke(255,102,0,200);
+            line(x-(45*scale),y-(15*scale),x-(65*scale),y-(15*scale)); //tail end
+            fill(255,50,150,200);
+            noStroke();
+            triangle(x+(178*scale),y-(25*scale),x+(185*scale),y-(32*scale),x+(185*scale),y-(18*scale)); //nose bit            
         }
     }
 }
