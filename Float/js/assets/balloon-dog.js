@@ -8,7 +8,7 @@ function BalloonDog() {
 
 
     this.draw = function(x, y, scale) {
-        scale = scale || 0.8;                             //optional parameter which defaults to 1
+        scale = scale || 1;                             //optional parameter which defaults to 1
         this.frameNumber++;
         
         if (!(this.frameNumber%30)){
