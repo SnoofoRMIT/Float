@@ -1,6 +1,7 @@
 ﻿// initialise global variables here
 var canvas;
 var gameSpeed = 2;
+var alive;
 var bground = [];
 var fground = [];
 var ground;
@@ -19,7 +20,7 @@ function preload() {
 function setup() {
     // Creates a canvas 600 width 400 height
     createCanvas(600, 400);
-    ground = height - 24;
+    ground = height - 46;
     backgroundImg.resize(width, height / 3);
     foregroundImg.resize(width, height - (height / 3));
     bground.push(new Background(0));
@@ -27,47 +28,59 @@ function setup() {
     fground.push(new Foreground(0));
     fground.push(new Foreground(width));
     player = new Player();
+    alive = true;
 }
 
 // This is the game loop. Anything put in here is looped over continuously
 function draw() {
+    if (alive) {
+        for (var i = 0; i < bground.length; ++i) {
+            bground[i].show();
+            bground[i].update();
+        }
+        if (bground[0].needsNew()) {
+            bground.push(new Background(width));
+            bground.splice(0, 1);
+        }
 
-    for (var i = 0; i < fground.length; ++i) {
-        bground[i].show();
-        bground[i].update();
-    }
+        for (var i = 0; i < fground.length; ++i) {
+            fground[i].show();
+            fground[i].update();
+        }
 
-    if (bground[0].needsNew()) {
-        bground.push(new Background(width));
+        if (fground[0].needsNew()) {
+            fground.push(new Foreground(width));
+            fground.splice(0, 1);
+        }
+        player.update();
+        player.show();
     }
-    if (bground[0].offscreen()) {
-        bground.splice(0, 1);
+    else {
+        // gameover stuff here
+        textAlign(CENTER, CENTER);
+        text("GAME OVER", width / 2, height / 2);
     }
-
-    for (var i = 0; i < fground.length; ++i) {
-        fground[i].show();
-        fground[i].update();
-    }
-
-    if (fground[0].needsNew()) {
-        fground.push(new Foreground(width));
-    }
-    if (fground[0].offscreen()) {
-        fground.splice(0, 1);
-    }
-    player.update();
-    player.show();
-
 }
 
 function keyTyped() {
     if (key == 'w') {
         player.jump();
     }
-    if (key == 'a') {
-        player.moveLeft();
-    }
-    if (key == 'd') {
-        player.moveRight();
+//    if (key == 'a') {
+//        player.moveLeft();
+//    }
+//    if (key == 'd') {
+//        player.moveRight();
+//    }
+}
+function keyReleased() {
+//    if (keyCode == 65) {
+//        player.move = 0;
+//    }
+//    if (keyCode == 68 && !keyIsDown(65)) {
+//        player.move = 0;
+//    }
+    if (keyCode == 87) {
+        player.jumping = false;
     }
 }

@@ -1,38 +1,33 @@
 ﻿
 // function to create a foreground 'object'
-function Foreground(start) {
+function Foreground(startX) {
     // this.base = ground;
     this.img = foregroundImg;
-    this.x = start;
+    this.x = startX;
     // y coordinate is the ground of the foreground
     // use this point for where player stands and obstacles sit
     this.y = height / 3;
     // create an array of new obstacle 'objects'
     var obs = [];
-    // obs.push(new Obstacle(this.x, this.y));
+    obs.push(new Obstacle(this.x, ground));
     // function to update foreground (make it move)
     this.update = function () {
         this.x -= gameSpeed;
     }
     // function to draw the foreground in it's current coordinates
     this.show = function () {
-       // fill(150, 90, 80);
-        // this rect is the 'ground'
-        //rect(this.x, this.y, this.width, h);
         image(this.img, this.x, this.y);
         // show obstacles on foreground
         for (var i = 0; i < obs.length; ++i) {
-            obs[i].update(gameSpeed);
-            obs[i].collide();
+            obs[i].update();
+            if (obs[i].collide(player)) {
+                alive = false;
+            }
             obs[i].show();
         }
     }
-
+    // function to check if the foreground is off the screen
     this.needsNew = function () {
-        return this.x == (-width);
-    }
-    // function to check if foreground is off the screen
-    this.offscreen = function () {
-        return this.x <= -(width);
+        return this.x < (-width);
     }
 }

@@ -3,9 +3,9 @@
 // var theSun = new Sun();
 
 // function to create a background 'object'
-function Background(start) {
+function Background(startX) {
     // function to draw the background
-    this.x = start;
+    this.x = startX;
     this.img = backgroundImg;
     this.show = function () {
         image(this.img, this.x, 0)
@@ -16,13 +16,9 @@ function Background(start) {
     this.update = function () {
         this.x -= gameSpeed / 3;
     }
-
+    // function to check if the background is off the screen
     this.needsNew = function () {
-        return this.x == (-width);
-    }
-    // function to check if foreground is off the screen
-    this.offscreen = function () {
-        return this.x <= -(width);
+        return this.x < (-width);
     }
 }
 
