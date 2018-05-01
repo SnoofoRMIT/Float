@@ -14,3 +14,48 @@ body {
 
   align-items: center;
 }
+
+/*css styling for menu text */
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: Castellar;
+    font-weight: bold;
+
+
+}
+
+.start_game {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    right: 10%;
+    bottom: 64%;
+    font-size: 26px;
+    text-decoration: underline;
+    transform: translate(-50%, -50%);
+}
+
+
+.highscores {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  right: 10%;
+  bottom: 160%;
+  font-size: 26px;
+  text-decoration: underline;
+  transform: translate(-50%, -50%);
+}
+
+.credits {
+  position: absolute;
+  top: 54%;
+  left: 41%;
+  right: 70%;
+  bottom: 50%;
+  font-size: 26px;
+  text-decoration: underline;
+  transform: translate(-50%, -50%);
+}
