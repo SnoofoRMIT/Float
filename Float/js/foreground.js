@@ -21,7 +21,7 @@ function Foreground(startX) {
         for (var i = 0; i < obs.length; ++i) {
             obs[i].update();
             if (obs[i].collide(player)) {
-                alive = false;
+                gameState = GameStates.Over;
             }
             obs[i].show();
         }

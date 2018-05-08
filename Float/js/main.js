@@ -1,7 +1,6 @@
 ﻿// initialise global variables here
 var canvas;
 var gameSpeed = 2;
-var alive;
 var bground = [];
 var fground = [];
 var ground;
@@ -10,6 +9,13 @@ var player;
 var playerImg;
 var backgroundImg;
 var foregroundImg;
+var music;
+var gameState;
+var GameStates = {
+    Running: {value: "Running"},
+    Over: {value: "Game Over"},
+    Menu: {value: "Menu"}
+};
 
 function preload() {
     // load all images here
@@ -21,49 +27,68 @@ function setup() {
     // Creates a canvas 600 width 400 height
     createCanvas(600, 400);
     ground = height - 46;
-    backgroundImg.resize(width, height / 3 + 20);
+    backgroundImg.resize(width, height / 3 + 5);
     foregroundImg.resize(width, height - (height / 3));
     bground.push(new Background(0));
     bground.push(new Background(width));
     fground.push(new Foreground(0));
     fground.push(new Foreground(width));
     player = new Player();
-    alive = true;
+    document.getElementById("gameMusic").play();
+    gameState = GameStates.Running;
 }
 
 // This is the game loop. Anything put in here is looped over continuously
 function draw() {
-    if (alive) {
-        for (var i = 0; i < bground.length; ++i) {
-            bground[i].show();
-            bground[i].update();
-        }
-        if (bground[0].needsNew()) {
-            bground.push(new Background(width));
-            bground.splice(0, 1);
-        }
+    switch (gameState){
+        case GameStates.Running:{
+            for (var i = 0; i < bground.length; ++i) {
+                bground[i].show();
+                bground[i].update();
+            }
+            if (bground[0].needsNew()) {
+                bground.push(new Background(width));
+                bground.splice(0, 1);
+            }
 
-        for (var i = 0; i < fground.length; ++i) {
-            fground[i].show();
-            fground[i].update();
-        }
+            for (var i = 0; i < fground.length; ++i) {
+                fground[i].show();
+                fground[i].update();
+            }
 
-        if (fground[0].needsNew()) {
-            fground.push(new Foreground(width));
-            fground.splice(0, 1);
+            if (fground[0].needsNew()) {
+                fground.push(new Foreground(width));
+                fground.splice(0, 1);
+            }
+            player.update();
+            player.show();
+            break;
         }
-        player.update();
-        player.show();
-    }
-    else {
-        // gameover stuff here
-        textAlign(CENTER, CENTER);
-        text("GAME OVER", width / 2, height / 2);
+        case GameStates.Over:{
+            // gameover stuff here
+            textAlign(CENTER, CENTER);
+            textSize(20);
+            text("GAME OVER", width / 2, height / 2);
+            document.getElementById("gameMusic").pause();
+            var button = document.getElementById("menuButton");
+            button.style.visibility = "visible";
+            break;
+        }
+        case GameStates.Menu:{
+            window.location.href = "./index.html"; 
+            break;
+        }
+        default:
+            break;
     }
 }
 
+function gotoMenu(){
+    gameState = GameStates.Menu;
+}
+
 function keyTyped() {
-    if (key == 'w') {
+    if (key == 'w' && gameState == GameStates.Running) {
         player.jump();
     }
 //    if (key == 'a') {
