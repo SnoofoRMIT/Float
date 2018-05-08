@@ -21,6 +21,7 @@ function Foreground(startX) {
         for (var i = 0; i < obs.length; ++i) {
             obs[i].update();
             if (obs[i].collide(player)) {
+                document.getElementById("popSound").play();
                 gameState = GameStates.Over;
             }
             obs[i].show();
