@@ -21,7 +21,7 @@ function setup() {
     // Creates a canvas 600 width 400 height
     createCanvas(600, 400);
     ground = height - 46;
-    backgroundImg.resize(width, height / 3);
+    backgroundImg.resize(width, height / 3 + 20);
     foregroundImg.resize(width, height - (height / 3));
     bground.push(new Background(0));
     bground.push(new Background(width));
