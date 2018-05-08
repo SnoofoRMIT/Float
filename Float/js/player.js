@@ -58,6 +58,7 @@ function Player() {
         // remove this if to make floating dog
         if (this.y == ground) {
             this.jumping = true;
+            document.getElementById("jumpSound").play();
         }
     }
 

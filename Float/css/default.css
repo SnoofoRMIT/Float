@@ -33,10 +33,26 @@ body {
     right: 10%;
     bottom: 64%;
     font-size: 26px;
-    text-decoration: underline;
+    text-decoration: none;
     transform: translate(-50%, -50%);
 }
 
+#gameOver {
+    position: absolute;
+    visibility: hidden;
+    top: 52%;
+}
+
+#menuButton {
+    border: none;
+    background-color: #e7e7e7;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}
 
 .highscores {
   position: absolute;
@@ -45,17 +61,30 @@ body {
   right: 10%;
   bottom: 160%;
   font-size: 26px;
-  text-decoration: underline;
+  text-decoration: none;
   transform: translate(-50%, -50%);
 }
 
 .credits {
   position: absolute;
   top: 54%;
-  left: 41%;
+  left: 45%;
   right: 70%;
   bottom: 50%;
   font-size: 26px;
-  text-decoration: underline;
+  text-decoration: none;
   transform: translate(-50%, -50%);
+}
+
+.start_game:hover {
+  text-decoration: underline;
+  /* playSound(); */ 
+}
+
+.highscores:hover {
+  text-decoration: underline;
+}
+
+.credits:hover {
+  text-decoration: underline;
 }
