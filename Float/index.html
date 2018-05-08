@@ -6,36 +6,49 @@
     <title>Float</title>
     <link href="css/default.css" rel="stylesheet" />
     <style> body {padding: 0; margin: 0;} </style>
-
+    <script type="text/javascript">
+        var menuMusic = document.getElementById("menuMusic");
+        function loading() {
+            soundClick();
+        }
+    </script>
 
 </head>
-<body>
+<body onload="loading();">
+    <audio id="clickSound">
+        <source src="./sounds/clickSound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="menuMusic">
+        <source src="./sounds/menuMusic.mp3" type="audio/mpeg">
+    </audio>
     <div class="container">
-    <img src="./images/menu.jpg" style="width:600px;height:400px;">
- 	<div onclick="gameload();"class="start_game">START GAME</div>
-    <div onclick="highscoresload();"class="highscores">HIGHSCORES</div>
-    <div onclick="creditsload()();"class="credits">CREDITS</div>
+        <img src="./images/menu.jpg" style="width:600; height:400;">
+        <div onclick="gameload();" class="start_game">START GAME</div>
+        <div onclick="highscoresload();" class="highscores">HIGHSCORES</div>
+        <div onclick="creditsload()();" class="credits">CREDITS</div>
     </div>
     
 <script>
-var start_game;
-function gameload() {
-if (start_game = true) {
-	window.location.href = "./game.html"; //game html location will only be stored in the root directory temporarily
-	}
-}
-</script>
+    var click = document.getElementById("clickSound");
+    function soundClick(){
+        click.play();
+    }
 
-<script>
-function highscoresload() {
-//highscores place holder
-}
-</script>
+    var start_game = true;
+    function gameload() {
+        if (start_game) {
+            window.location.href = "./game.html"; //game html location will only be stored in the root directory temporarily
+        }
+    }
+    function highscoresload() {
+        //highscores place holder
+        soundClick();
+    }
 
-<script>
-function creditsload() {
-//credits place holder
-}
+    function creditsload() {
+        //credits place holder
+        soundClick();
+    }
 </script>
 
 </body>
