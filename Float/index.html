@@ -7,14 +7,10 @@
     <link href="css/default.css" rel="stylesheet" />
     <style> body {padding: 0; margin: 0;} </style>
     <script type="text/javascript">
-        var menuMusic = document.getElementById("menuMusic");
-        function loading() {
-            soundClick();
-        }
     </script>
 
 </head>
-<body onload="loading();">
+<body>
     <audio id="clickSound">
         <source src="./sounds/clickSound.mp3" type="audio/mpeg">
     </audio>
@@ -30,12 +26,23 @@
     
 <script>
     var click = document.getElementById("clickSound");
+    // var music = document.getElementById("menuMusic");
+    var start_game = true;
+
+    function playMusic(){
+        document.getElementById("menuMusic").play();
+    }
+
     function soundClick(){
         click.play();
     }
 
-    var start_game = true;
+    body.onload = function(){
+        playMusic();
+    }
+
     function gameload() {
+        soundClick();
         if (start_game) {
             window.location.href = "./game.html"; //game html location will only be stored in the root directory temporarily
         }
