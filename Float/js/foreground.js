@@ -18,13 +18,18 @@ function Foreground(startX) {
     this.show = function () {
         image(this.img, this.x, this.y);
         // show obstacles on foreground
-        for (var i = 0; i < obs.length; ++i) {
+        for (var i = obs.length-1; i >= 0; --i) {
             obs[i].update();
             if (obs[i].collide(player)) {
                 document.getElementById("popSound").play();
                 gameState = GameStates.Over;
+                highscores.push(score);
             }
             obs[i].show();
+            if (player.x > obs[i].x + obs[i].width
+                && player.x < obs[i].x + obs[i].width + 5){
+                bonusScore();
+            }
         }
     }
     // function to check if the foreground is off the screen

@@ -13,6 +13,7 @@ function Player() {
     this.velocity = 0;
     this.jumping = false;
     this.balloonDog = new BalloonDog();
+    
     // function to show the player
     this.show = function () {
         // fill(color(255, 50, 50));
